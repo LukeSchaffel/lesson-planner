@@ -18,6 +18,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(64), unique=True, index=True)
     username = db.Column(db.String(64), unique=True, index=True)
     password_hash = db.Column(db.String(128))
+    lessons = db.relationship('Lesson', backref='author', lazy=True)
 
     def __init__(self, email, username, password):
         self.email = email
@@ -31,3 +32,23 @@ class User(db.Model, UserMixin):
     def __repr__(self):
         return f"Username {self.username}"
 
+class Lesson(db.Model):
+    __tablename__ = 'lessons'
+    id = db.Column(db.Integer, primary_key=True)
+    date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    date_of_lesson = db.Column(db.String(140))
+    title = db.Column(db.String(140), nullable=False)
+    subject = db.Column(db.Text, nullable=False)
+    content = db.Column(db.Text, nullable=False)
+    # student_id = db.Column(db.Integer, db.ForeignKey('students.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+
+    def __init__(self, title, subject, content, user_id):
+        self.title = title
+        self.subject = subject
+        self.content = content
+        # self.student_id = student_id
+        self.user_id = user_id
+    
+    def __repr__(self):
+        return f"Lesson ID: {self.id} -- Date: {self.date} --- Title: {self.Title}"
