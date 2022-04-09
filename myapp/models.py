@@ -36,19 +36,20 @@ class Lesson(db.Model):
     __tablename__ = 'lessons'
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    date_of_lesson = db.Column(db.String(140), nullable=True)
+    lessonDate = db.Column(db.String(140), nullable=True)
     title = db.Column(db.String(140), nullable=False)
     subject = db.Column(db.Text, nullable=False)
     content = db.Column(db.Text, nullable=False)
     # student_id = db.Column(db.Integer, db.ForeignKey('students.id'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
-    def __init__(self, title, subject, content, user_id):
+    def __init__(self, title, subject, content, user_id, lessonDate):
         self.title = title
         self.subject = subject
         self.content = content
         # self.student_id = student_id
         self.user_id = user_id
+        self.lessonDate = lessonDate
     
     def __repr__(self):
         return f"Lesson ID: {self.id} -- Date: {self.date} --- Title: {self.Title}"
