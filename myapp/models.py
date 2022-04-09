@@ -36,7 +36,7 @@ class Lesson(db.Model):
     __tablename__ = 'lessons'
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    date_of_lesson = db.Column(db.String(140))
+    date_of_lesson = db.Column(db.String(140), nullable=True)
     title = db.Column(db.String(140), nullable=False)
     subject = db.Column(db.Text, nullable=False)
     content = db.Column(db.Text, nullable=False)

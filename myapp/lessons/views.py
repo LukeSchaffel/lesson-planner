@@ -12,7 +12,7 @@ lessons = Blueprint('lessons', __name__)
 def create_post():
     form = LessonForm()
     if form.validate_on_submit():
-        lesson = Lesson(title=form.title.data, content=form.content.data, user_id=current_user.id, date_of_lesson=form.date_of_lesson.data, subject=form.subject.data)
+        lesson = Lesson(date_of_lesson=form.date_of_lesson.data, title=form.title.data, subject=form.subject.data, content=form.content.data, user_id=current_user.id)
         db.session.add(lesson)
         db.session.commit()
         flash('Blog Post Created')
