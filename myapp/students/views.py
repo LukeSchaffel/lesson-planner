@@ -18,3 +18,5 @@ def create_lesson():
         print('Student CREATED')
         return redirect(url_for('core.index'))
     return render_template('create_student.html', form=form)
+
+    

@@ -3,7 +3,7 @@ from operator import methodcaller
 from flask import render_template, url_for, flash, redirect, request, Blueprint
 from flask_login import login_user, current_user, logout_user, login_required
 from myapp import db
-from myapp.models import User, Lesson
+from myapp.models import User, Lesson, Student
 from myapp.users.forms import RegistrationForm, LoginForm, UpdateUserForm
 
 users = Blueprint('users', __name__) # dont forget to register this in __init__.py 
@@ -14,7 +14,15 @@ def lessons(username):
   page = request.args.get('page', 1, type=int)
   user = User.query.filter_by(username=username).first_or_404()
   lessons = Lesson.query.filter_by(author=user).order_by(Lesson.date.desc()).paginate(page=page, per_page=5) 
-  return render_template('index.html', lessons=lessons, user=user)
+  return render_template('lessons.html', lessons=lessons, user=user, username=username)
+
+@users.route('/students')
+@login_required
+def students(username):
+  page = request.args.get('page', 1, type=int)
+  user = User.query.filter_by(username=username).first_or_404()
+  students = Student.query.filter_by(author=user).order_by(Student.date.desc()).paginate(page=page, per_page=5) 
+  return render_template('students.html', students=students, user=user)  
 
 
 
