@@ -56,3 +56,7 @@ app.register_blueprint(users)
 #Linking and registering lessons views Blueprint
 from myapp.lessons.views import lessons
 app.register_blueprint(lessons)
+
+# link and register students
+from myapp.students.views import students
+app.register_blueprint(students)
