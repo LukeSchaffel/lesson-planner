@@ -7,7 +7,7 @@ from myapp.models import Lesson, Student
 
 
 class LessonForm(FlaskForm):
-    student = SelectField('Student', choices = [Student], validators=[DataRequired()])
+    # student = SelectField('Student', choices = [Student])
     title = StringField('Title', validators=[DataRequired()])
     lessonDate = DateField('Date', format='%Y-%m-%d', validators=[DataRequired()])
     content = TextAreaField('Content', validators=[DataRequired()])

@@ -8,7 +8,7 @@ from myapp.users.forms import RegistrationForm, LoginForm, UpdateUserForm
 
 users = Blueprint('users', __name__) # dont forget to register this in __init__.py 
 
-@users.route('/lessons')
+@users.route('/<username>')
 @login_required
 def lessons(username):
   page = request.args.get('page', 1, type=int)

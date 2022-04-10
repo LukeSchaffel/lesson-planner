@@ -12,7 +12,7 @@ lessons = Blueprint('lessons', __name__)
 def create_lesson():
     form = LessonForm()
     if form.validate_on_submit():
-        lesson = Lesson(lessonDate=form.lessonDate.data, title=form.title.data, subject=form.subject.data, content=form.content.data, student=form.student.data, user_id=current_user.id)
+        lesson = Lesson(lessonDate=form.lessonDate.data, title=form.title.data, subject=form.subject.data, content=form.content.data, user_id=current_user.id)
         db.session.add(lesson)
         db.session.commit()
         flash('Lesson CREATED')

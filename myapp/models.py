@@ -44,14 +44,14 @@ class Lesson(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     student_id = db.Column(db.Integer, db.ForeignKey('students.id'), nullable=True)
 
-    def __init__(self, title, subject, content, user_id, lessonDate, student_id):
+    def __init__(self, title, subject, content, user_id, lessonDate):
         self.title = title
         self.subject = subject
         self.content = content
-        self.student_id = student_id
+        # self.student_id = student_id
         self.user_id = user_id
         self.lessonDate = lessonDate
-        self.student_id = student_id
+       
     
     def __repr__(self):
         return f"Lesson ID: {self.id} -- Date: {self.date} --- Title: {self.Title}"
