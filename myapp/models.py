@@ -37,6 +37,7 @@ class Lesson(db.Model):
     __tablename__ = 'lessons'
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    student = db.Column(db.String, nullable=True)
     lessonDate = db.Column(db.Date, nullable=True)
     title = db.Column(db.String, nullable=False)
     subject = db.Column(db.Text, nullable=False)
@@ -44,13 +45,14 @@ class Lesson(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     student_id = db.Column(db.Integer, db.ForeignKey('students.id'), nullable=True)
 
-    def __init__(self, title, subject, content, user_id, lessonDate):
+    def __init__(self, title, subject, content, user_id, lessonDate, student):
         self.title = title
         self.subject = subject
         self.content = content
         # self.student_id = student_id
         self.user_id = user_id
         self.lessonDate = lessonDate
+        self.student = student
        
     
     def __repr__(self):
