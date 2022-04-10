@@ -7,15 +7,15 @@ from myapp.models import User
 
 lessons = Blueprint('lessons', __name__)
 
-@lessons.route('/create', methods=['GET', 'POST'])
+@lessons.route('/lessons/create', methods=['GET', 'POST'])
 @login_required
-def create_post():
+def create_lesson():
     form = LessonForm()
     if form.validate_on_submit():
-        lesson = Lesson(lessonDate=form.lessonDate.data, title=form.title.data, subject=form.subject.data, content=form.content.data, user_id=current_user.id)
+        lesson = Lesson(lessonDate=form.lessonDate.data, title=form.title.data, subject=form.subject.data, content=form.content.data, student=form.student.data, user_id=current_user.id)
         db.session.add(lesson)
         db.session.commit()
-        flash('Blog Post Created')
-        print('Blog post was created')
+        flash('Lesson CREATED')
+        print('LESSON CREATED')
         return redirect(url_for('core.index'))
     return render_template('create_lesson.html', form=form)
