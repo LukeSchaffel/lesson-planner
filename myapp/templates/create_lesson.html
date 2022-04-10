@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-This is the create page
+<link rel="stylesheet" href="{{ url_for('static', filename='../static/css/create_lesson.css') }}">
+
+
+  <main>
     <div class="container">
       <form class="form-group" method="POST">
           {{form.hidden_tag()}}
@@ -29,5 +32,5 @@ This is the create page
         </div>
       </form>
     </div>
-
+  </main>
 {% endblock %}
