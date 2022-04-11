@@ -43,6 +43,9 @@
                   <form action="{{ url_for('lessons.delete_lesson', lesson_id=lesson.id) }}" method="POST">
                     <input class="btn btn-danger" type="submit" value="Delete">
                   </form>
+                  <form action="{{ url_for('lessons.update', lesson_id=lesson.id) }}">
+                    <input class="btn btn-danger" type="submit" value="Update">
+                  </form>
                 </div>
               </div>
             </div>
