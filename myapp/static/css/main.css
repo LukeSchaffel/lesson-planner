@@ -68,3 +68,7 @@ main{
 a {
   text-decoration: none;
 }
+
+#modal-p{
+  font-size: 2rem;
+}
