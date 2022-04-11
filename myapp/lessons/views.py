@@ -38,3 +38,4 @@ def delete_lesson(lesson_id):
 def lesson(lesson_id):
     lesson = Lesson.query.get_or_404(lesson_id) 
     return render_template('lesson.html', title=lesson.title, student=lesson.student, lessonDate=lesson.lessonDate, content=lesson.content, subject=lesson.subject, date=lesson.date, lesson=lesson)    
+

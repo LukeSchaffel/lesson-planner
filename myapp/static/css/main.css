@@ -41,6 +41,10 @@ main{
   border-radius: 10px;
 }
 
+#lesson-summary {
+  font-size: 2rem;
+}
+
 .btn {
   font-size: 1.6rem;
 }
@@ -69,6 +73,14 @@ a {
   text-decoration: none;
 }
 
+.modal {
+  font-family: 'Schoolbell', cursive;
+  background-image: url("https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/589483/589483_o02_office_depot_brand_notebook_filler_paper/589483_o02_office_depot_brand_notebook_filler_paper");
+  background-size: cover;
+}
+
 #modal-p{
   font-size: 2rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
