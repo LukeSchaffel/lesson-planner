@@ -50,10 +50,11 @@ def update(lesson_id):
     form = LessonForm()
 
     if form.validate_on_submit():
-        lessonDate = form.lessonDate.data
-        title = form.title.data
-        subject = form.subject.data
-        content = form.content.data
+        lesson.lessonDate = form.lessonDate.data
+        lesson.title = form.title.data
+        lesson.subject = form.subject.data
+        lesson.content = form.content.data
+        lesson.student = form.student.data
         db.session.commit()
         flash('Lesson Updated')
         return redirect(url_for('lessons.lesson',lesson_id=lesson.id))
