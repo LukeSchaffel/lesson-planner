@@ -1,3 +1,4 @@
+from cgi import print_arguments
 from flask import render_template, url_for, flash, request, redirect, Blueprint, abort
 from flask_login import current_user, login_required
 from myapp import db 
@@ -17,7 +18,7 @@ def create_lesson():
         db.session.commit()
         flash('Lesson CREATED')
         print('LESSON CREATED')
-        return redirect(url_for('core.index'))
+        return redirect(url_for('users.lessons', username=current_user.username))
     return render_template('create_lesson.html', form=form)
 
 @lessons.route('/<int:lesson_id>/delete',methods=['GET','POST'])
@@ -31,4 +32,9 @@ def delete_lesson(lesson_id):
     db.session.delete(lesson)
     db.session.commit()
     flash('Blog Post Deleted')
-    return redirect(url_for('core.index'))    
+    return redirect(url_for('users.lessons', username=current_user.username))    
+
+@lessons.route('/<int:lesson_id>')
+def lesson(lesson_id):
+    lesson = Lesson.query.get_or_404(lesson_id) 
+    return render_template('lesson.html', title=lesson.title, student=lesson.student, lessonDate=lesson.lessonDate, content=lesson.content, subject=lesson.subject, date=lesson.date, lesson=lesson)    

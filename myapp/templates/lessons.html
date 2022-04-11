@@ -1,22 +1,30 @@
 {% extends "base.html" %}
 {% block content %}
 
+<main>
+  <div >
+    <h1 >All {{user.username}}'s Lessons</h1>
+    
+    <div>
+      {% for lesson in lessons.items %}
 
-<div class="jumbotron">
-<h1 class="display-4">All {{user.username}}'s Lessons</h1>
-
-<div>
-  {% for lesson in lessons.items %}
-  <h2>{{lesson.student}} has a(n) {{lesson.subject}} lesson on {{lesson.lessonDate}}</h2>
-  {% if lesson.author == current_user %}
-     <div>
-      
-       <form action="{{ url_for('lessons.delete_lesson', lesson_id=lesson.id) }}" method="POST">
-        <input class="btn btn-danger" type="submit" value="Delete">
-      </form>
-     </div>
-   {% endif %}
-</div>
-  {% endfor %}
-</div>
+      <h2>
+        <a href="http://{{url_for('lessons.lesson', lesson_id=lesson.id)}}">
+          {{lesson.student}} 
+        </a>
+        has a(n) {{lesson.subject}} lesson on {{lesson.lessonDate}}
+        To <a class="btn btn-primary" href="{{ url_for('lessons.lesson', lesson_id=lesson.id) }}">
+         {{lesson.title}}
+        </a>
+      </h2>
+        <div>
+          <form action="{{ url_for('lessons.delete_lesson', lesson_id=lesson.id) }}" method="POST">
+            <input class="btn btn-danger" type="submit" value="Delete">
+          </form>
+        </div>
+      </div>
+      {% endfor %}
+    
+  </div>
+</main>
 {% endblock %}
