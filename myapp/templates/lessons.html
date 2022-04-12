@@ -15,15 +15,16 @@
         <!-- To <a class="btn btn-primary" href="{{ url_for('lessons.lesson', lesson_id=lesson.id) }}">
          {{lesson.title}} -->
         </a>
+
       
           <!-- Button trigger modal -->
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{lesson.id}}">
             Details
           </button>
 
           <!-- Modal -->
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
+          <div class="modal fade" id="exampleModal{{lesson.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" id="exampleModal{{lesson.id}}">
               <div class="modal-content">
                 <div class="modal-header">
                   <h1 class="modal-title" id="exampleModalLabel">{{lesson.student}}'s {{lesson.subject}} Lesson.</h1>
