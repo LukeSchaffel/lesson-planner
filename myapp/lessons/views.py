@@ -69,3 +69,9 @@ def update(lesson_id):
         
 
     return render_template('create_lesson.html',title='Updating',form=form)
+
+@lessons.route('/')
+def lessons(student):
+  page = request.args.get('page', 1, type=int)
+  lessons = Lesson.query.filter_by(student=student).order_by(Lesson.lessonDate.desc()).paginate(page=page, per_page=5) 
+  return render_template('student.html', lessons=lessons)

@@ -8,7 +8,7 @@ from myapp.users.forms import RegistrationForm, LoginForm, UpdateUserForm
 
 users = Blueprint('users', __name__) # dont forget to register this in __init__.py 
 
-@users.route('/<username>')
+@users.route('/<username>/lessons')
 @login_required
 def lessons(username):
   page = request.args.get('page', 1, type=int)
@@ -16,13 +16,13 @@ def lessons(username):
   lessons = Lesson.query.filter_by(author=user).order_by(Lesson.lessonDate.desc()).paginate(page=page, per_page=5) 
   return render_template('lessons.html', lessons=lessons, user=user, username=username)
 
-@users.route('/students')
+@users.route('/<username>/students')
 @login_required
 def students(username):
   page = request.args.get('page', 1, type=int)
   user = User.query.filter_by(username=username).first_or_404()
-  students = Student.query.filter_by(author=user).order_by(Student.date.desc())
-  return render_template('students.html', students=students, user=user)  
+  lessons = Lesson.query.filter_by(author=user).distinct('student').paginate(page=page, per_page=5) 
+  return render_template('students.html', lessons=lessons, user=user, username=username)  
 
 
 

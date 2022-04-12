@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+
+<main>
+  {% for lesson in lessons.items %}
+  <h1>{{lesson.student}}</h1>
+
+  {% endfor %}
+</main>
+
+{% endblock %}
+

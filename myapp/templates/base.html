@@ -24,32 +24,32 @@
             {% endif %}
         </li>
         
-        <span id="right-side-nav">
-        <li class="nav-link">
-            <a href="{{url_for('users.lessons', username=current_user.username)}}">My Lessons</a>
-        </li>
-        <li class="nav-link">
-            <a href="{{url_for('core.info')}}">About</a>
-        </li>
+       
 
         {% if current_user.is_authenticated %}
-        <li class="nav-link">
-            <a href="{{url_for('users.logout')}}">Log Out</a>
-        </li>
-        <li class="nav-link">
-            <a href="{{url_for('users.account')}}">Account</a>
-        </li>
-        <li class="nav-link">
-            <a href="{{url_for('lessons.create_lesson')}}">Create Lesson</a>
-        </li>
-        {% else %}
-        <li class="nav-link">
-            <a href="{{url_for('users.login')}}">Log In</a>
-        </li>
-        <li class="nav-link">
-            <a href="{{url_for('users.register')}}">Register</a>
-        </li>
-       
+        <span id="right-side-nav">
+            <li class="nav-link">
+                <a href="{{url_for('users.lessons', username=current_user.username)}}">My Lessons</a>
+            </li>
+            <li class="nav-link">
+                <a href="{{url_for('users.students', username=current_user.username)}}">My Students</a>
+            </li>
+            <li class="nav-link">
+                <a href="{{url_for('users.logout')}}">Log Out</a>
+            </li>
+            <li class="nav-link">
+                <a href="{{url_for('users.account')}}">Account</a>
+            </li>
+            <li class="nav-link">
+                <a href="{{url_for('lessons.create_lesson')}}">Create Lesson</a>
+            </li>
+            {% else %}
+            <li class="nav-link">
+                <a href="{{url_for('users.login')}}">Log In</a>
+            </li>
+            <li class="nav-link">
+                <a href="{{url_for('users.register')}}">Register</a>
+            </li>
         </span>
         {% endif %}
     </ul>
