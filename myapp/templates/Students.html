@@ -4,7 +4,9 @@
 <main>
   {% for lesson in lessons.items %}
   <h1>
-    {{lesson.student}}
+    <a href="{{ url_for('lessons.student', student_name=lesson.student) }}">
+      {{lesson.student}} 
+    </a>
   </h1>
 
   {% endfor %}
