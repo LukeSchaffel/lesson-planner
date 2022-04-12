@@ -5,7 +5,8 @@
 <main>
   <h1>Welcome {{current_user.username}} to your lesson with {{lesson.student}}</h1>
   <h1>{{lesson.title}}</h1>         
-  <h2>When:{{lesson.lessonDate}}</h2>
+  <h2>When:{{lesson.lessonDate.strftime('%m-%d-%Y')}}</h2>
+  <h2>What: {{lesson.subject}}</h2>
   __________________________________________________
   <p id="modal-p">
     {{lesson.content}}

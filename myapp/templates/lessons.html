@@ -8,10 +8,10 @@
     <div>
       {% for lesson in lessons.items %}
       <p id="lesson-summary">
-        <a href="http://{{url_for('lessons.lesson', lesson_id=lesson.id)}}">
+        <a href="{{ url_for('lessons.student', student_name=lesson.student) }}">
           {{lesson.student}} 
         </a>
-        has a(n) {{lesson.subject}} lesson on {{lesson.lessonDate}}
+        has a(n) {{lesson.subject}} lesson on {{lesson.lessonDate.strftime('%m-%d-%Y')}}
         <!-- To <a class="btn btn-primary" href="{{ url_for('lessons.lesson', lesson_id=lesson.id) }}">
          {{lesson.title}} -->
         </a>
@@ -33,7 +33,7 @@
                 <div class="modal-body">
                   <h1>{{lesson.title}}</h1>
                   
-                  <h2>When:    {{lesson.lessonDate}}</h2>
+                  <h2>When:    {{lesson.lessonDate.strftime('%m-%d-%Y')}}</h2>
                   __________________________________________________
                   <p id="modal-p">
                     {{lesson.content}}

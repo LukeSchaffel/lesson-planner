@@ -1,5 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='../static/css/student.css') }}">
 
+
+<main>
+  <h1>All {{student}}'s Lessons:</h1>
+  
+  {% for lesson in lessons.items %}
+  <p>{{student}} has a {{lesson.subject}} on {{lesson.lessonDate.strftime('%m-%d-%Y')}}</p>
+
+  {% endfor %}
+
+</main>
 
 {% endblock %}
