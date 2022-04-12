@@ -14,8 +14,14 @@
 </head>
 <body>
     <ul class="navbar navbar-dark bg-dark">
-        <li class="navbar-brand">
-            <a class="navbar-brand" href="{{url_for('core.index')}}">Home</a>
+        {% if current_user.is_authenticated %}
+         <li class="navbar-brand">
+            <a href="{{url_for('users.lessons', username=current_user.username)}}">Home</a>
+            {% else %}
+            <li class="navbar-brand">
+                <a href="{{url_for('users.register')}}">Home</a>
+            </li>
+            {% endif %}
         </li>
         
         <span id="right-side-nav">
