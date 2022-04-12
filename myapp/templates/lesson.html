@@ -3,13 +3,24 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/lesson.css') }}">
 
 <main>
-  <h1>Welcome {{current_user.username}} to your lesson with {{lesson.student}}</h1>
-  <h1>{{lesson.title}}</h1>         
-  <h2>When:{{lesson.lessonDate.strftime('%m-%d-%Y')}}</h2>
-  <h2>What: {{lesson.subject}}</h2>
-  __________________________________________________
-  <p id="modal-p">
-    {{lesson.content}}
-  </p>
+  <div>
+    <h1>Welcome {{current_user.username}} to your lesson with {{lesson.student}}</h1>
+    <h1>{{lesson.title}}</h1>         
+    <h2>When:{{lesson.lessonDate.strftime('%m-%d-%Y')}}</h2>
+    <h2>What: {{lesson.subject}}</h2>
+    __________________________________________________
+    <p id="modal-p">
+      {{lesson.content}}
+    </p>
+  </div>
+  <div class="lesson-footer">
+    <form action="{{ url_for('lessons.delete_lesson', lesson_id=lesson.id) }}" method="POST">
+      <input class="btn btn-danger" type="submit" value="Delete">
+    </form>
+    <form action="{{ url_for('lessons.update', lesson_id=lesson.id) }}">
+      <input class="btn btn-success" type="submit" value="Update">
+    </form>
+   
+  </div>
 </main>
 {% endblock %}

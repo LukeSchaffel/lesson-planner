@@ -58,6 +58,9 @@ class Lesson(db.Model):
     def __repr__(self):
         return f"Lesson ID: {self.id} -- Date: {self.date} --- Title: {self.Title}"
 
+
+
+# ----------------This was never Used---------
 class Student(db.Model):
     __tablename__ = 'students'
     id = db.Column(db.Integer, primary_key=True)

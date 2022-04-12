@@ -7,7 +7,8 @@
   <h1>All {{student}}'s Lessons:</h1>
   
   {% for lesson in lessons.items %}
-  <p>{{student}} has a {{lesson.subject}} on {{lesson.lessonDate.strftime('%m-%d-%Y')}}
+  <p>
+    {{student}} has a {{lesson.subject}} on {{lesson.lessonDate.strftime('%m-%d-%Y')}}
     <form action="{{ url_for('lessons.lesson',lesson_id=lesson.id) }}">
       <input class="btn btn-primary" type="submit" value="View">
     </form>
