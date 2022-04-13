@@ -57,6 +57,3 @@ app.register_blueprint(users)
 from myapp.lessons.views import lessons
 app.register_blueprint(lessons)
 
-# Students model was abandoned for student column on lesson table
-# from myapp.students.views import students
-# app.register_blueprint(students)
