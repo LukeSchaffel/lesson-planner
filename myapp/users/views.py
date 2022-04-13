@@ -30,7 +30,7 @@ def students(username):
   page = request.args.get('page', 1, type=int)
   user = User.query.filter_by(username=username).first_or_404()
   lessons = Lesson.query.filter_by(author=user).distinct('student').paginate(page=page, per_page=5) 
-  return render_template('students.html', lessons=lessons, user=user, username=username)  
+  return render_template('students.html' lessons=lessons, user=user, username=username)  
 
 
 
