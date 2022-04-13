@@ -12,17 +12,73 @@
     let calendar = new FullCalendar.Calendar(calendarEl, {
       events : [
       {% for lesson in lessons %}
+
       {
-        title: '{{lesson.student}}',
-        start: '{{lesson.lessonDate}}'
+        title: `{{lesson.student}}`,
+        start: '{{lesson.lessonDate}}',
+        eventClick: function (info) {
+          alert('hi')
+        }
       },
+      
       {% endfor %}
-      ]
-    })
+      ],})
 
     calendar.render()
   </script>
   </div>
+  {% for lesson in lessons.items %}
+  <p id="lesson-summary">
+    <a href="{{ url_for('lessons.student', student_name=lesson.student) }}">
+      {{lesson.student}} 
+    </a>
+    has a(n) {{lesson.subject}} lesson on {{lesson.lessonDate.strftime('%m-%d-%Y')}}
+    <!-- To <a class="btn btn-primary" href="{{ url_for('lessons.lesson', lesson_id=lesson.id) }}">
+     {{lesson.title}} -->
+    </a>
+
+  
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{lesson.id}}">
+        Details
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal{{lesson.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" id="exampleModal{{lesson.id}}">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title" id="exampleModalLabel">{{lesson.student}}'s {{lesson.subject}} Lesson.</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <h1>{{lesson.title}}</h1>
+              
+              <h2>When:    {{lesson.lessonDate.strftime('%m-%d-%Y')}}</h2>
+              __________________________________________________
+              <p id="modal-p">
+                {{lesson.content}}
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <form action="{{ url_for('lessons.delete_lesson', lesson_id=lesson.id) }}" method="POST">
+                <input class="btn btn-danger" type="submit" value="Delete">
+              </form>
+              <form action="{{ url_for('lessons.update', lesson_id=lesson.id) }}">
+                <input class="btn btn-success" type="submit" value="Update">
+              </form>
+              <form action="{{ url_for('lessons.lesson',lesson_id=lesson.id) }}">
+                <input class="btn btn-primary" type="submit" value="View">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    </p>
+  {% endfor %}
+  
 </main>
 
 {% endblock %}
