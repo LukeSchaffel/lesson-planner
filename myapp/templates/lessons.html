@@ -4,7 +4,9 @@
 <main>
   <div >
     <h1 >All {{user.username}}'s Lessons</h1>
-    
+    <h3>
+      <a href="{{url_for('users.calendar', username=current_user.username)}}">Switch To Calendar</a>
+    </h3>
     <div>
       {% for lesson in lessons.items %}
       <p id="lesson-summary">

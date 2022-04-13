@@ -4,25 +4,25 @@
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js"></script>
 
 <main>
-<div id="calendar">
-<script>
-  let calendarEl = document.getElementById('calendar');
+ <h3><a href="{{url_for('users.lessons', username=current_user.username)}}">Switch to List</a></h3> 
+  <div id="calendar">
+  <script>
+    let calendarEl = document.getElementById('calendar');
 
-  let calendar = new FullCalendar.Calendar(calendarEl, {
-    events : [
-    {% for lesson in lessons %}
-    {
-      title: '{{lesson.student}}',
-      start: '{{lesson.lessonDate}}'
-    },
-    {% endfor %}
-    ]
-  })
+    let calendar = new FullCalendar.Calendar(calendarEl, {
+      events : [
+      {% for lesson in lessons %}
+      {
+        title: '{{lesson.student}}',
+        start: '{{lesson.lessonDate}}'
+      },
+      {% endfor %}
+      ]
+    })
 
-  calendar.render()
-</script>
-</div>
-
+    calendar.render()
+  </script>
+  </div>
 </main>
 
 {% endblock %}
