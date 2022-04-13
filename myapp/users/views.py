@@ -24,7 +24,7 @@ def calendar(username):
   lessons = Lesson.query.filter_by(author=user)
   return render_template('calendar.html', lessons=lessons, user=user, username=username)  
 
-@users.route('/<username>/mystudents')
+@users.route('/<username>/students')
 @login_required
 def students(username):
   page = request.args.get('page', 1, type=int)
