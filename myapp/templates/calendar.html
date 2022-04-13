@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css">
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js"></script>
+
+<main>
+<div id="calendar">
+<script>
+  let calendarEl = document.getElementById('calendar');
+
+  let calendar = new FullCalendar.Calendar(calendarEl, {
+    events : [
+    {% for lesson in lessons %}
+    {
+      title: '{{lesson.student}}',
+      start: '{{lesson.lessonDate}}'
+    },
+    {% endfor %}
+    ]
+  })
+
+  calendar.render()
+</script>
+</div>
+
+</main>
+
+{% endblock %}
