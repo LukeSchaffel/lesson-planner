@@ -4,8 +4,9 @@
 
 
 <main>
-  <h1>All {{student}}'s Lessons:</h1>
-  
+  <div id="top-part">
+    <h1>All {{student}}'s Lessons:</h1>
+  </div>
   {% for lesson in lessons.items %}
   <p>
     {{student}} has a {{lesson.subject}} lesson on {{lesson.lessonDate.strftime('%m-%d-%Y')}}
