@@ -12,6 +12,14 @@ h2 {
   
 }
 
+#pictures {
+  text-align: center;
+}
+
+img {
+  max-width: 80%;
+}
+
 
 .pag-nav {
   margin-top: 30px;
