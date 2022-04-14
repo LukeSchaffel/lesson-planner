@@ -13,3 +13,13 @@ main {
   height: 100px;
   margin-bottom: 20px;
 }
+
+label, input {
+  display: block;
+}
+
+label {
+  margin-bottom: 20px;
+  font-family: 'Schoolbell', cursive;
+  font-size: 3rem;
+}

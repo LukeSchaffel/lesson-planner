@@ -1,4 +1,20 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>HOME</h1>
+<link rel="stylesheet" href="{{ url_for('static', filename='../static/css/index.css') }}">
+
+<main>
+{% if current_user.is_authenticated %}
+
+<div id="top-part">
+  <h1>Welcome Back, {{current_user.username}}</h1>
+  <h2>
+    <a href="{{url_for('users.lessons', username=current_user.username)}}">My Lessons</a>
+  </h2>
+  <h2>
+   <a href="{{url_for('users.students', username=current_user.username)}}">My Students</a>
+</h2>
+</div>
+{% endif %}
+</main>
+
 {% endblock %}
