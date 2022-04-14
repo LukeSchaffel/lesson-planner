@@ -14,6 +14,15 @@
    <a href="{{url_for('users.students', username=current_user.username)}}">My Students</a>
 </h2>
 </div>
+{% else %}
+<div id="top-part">
+  <h1>Welcome to Learnin'!, Sign in or Create an Account to Continue</h1>
+  <h2>
+    <a href="{{url_for('users.lessons', username=current_user.username)}}">My Lessons</a>
+  </h2>
+  <h2>
+   <a href="{{url_for('users.students', username=current_user.username)}}">My Students</a>
+
 {% endif %}
 </main>
 
