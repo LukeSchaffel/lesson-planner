@@ -1,0 +1,19 @@
+h3 {
+  font-family: 'Schoolbell', cursive;
+}
+
+main {
+  margin: 0 auto;
+  max-width: 70%;
+}
+
+#calendar {
+  color: black;
+}
+
+#calendar a {
+  color: black;
+  font-size: 1.5rem;
+}
+
+

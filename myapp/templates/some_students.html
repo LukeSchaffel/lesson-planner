@@ -1,12 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='../static/css/some_students.css') }}">
 <main>
+  <div id="top-part">
+    <h1 >All {{user.username}}'s Students</h1>
+  </div>
   {% for lesson in lessons.items %}
-  <h1>
+  <h2>
     <a href="{{ url_for('lessons.student', student_name=lesson.student) }}">
-      {{lesson.student}} 
+      - {{lesson.student}} 
     </a>
-  </h1>
+  </h2>
 
   {% endfor %}
   <nav aria-label="Page Navigation example" class="pag-nav">

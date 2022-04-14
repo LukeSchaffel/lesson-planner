@@ -2,6 +2,7 @@
 {% block content %}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css">
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='../static/css/calendar.css') }}">
 
 <main>
  <h3><a href="{{url_for('users.lessons', username=current_user.username)}}">Switch to List</a></h3> 

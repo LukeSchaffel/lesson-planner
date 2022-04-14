@@ -1,0 +1,17 @@
+h1 {
+  font-family: 'Schoolbell', cursive;
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+#top-part {
+  margin-bottom: 30px;
+}
+
+.pag-nav {
+  margin-top: 30px;
+}

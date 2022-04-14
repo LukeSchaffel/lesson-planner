@@ -6,4 +6,10 @@ main {
 
 .container {
   font-size: 2rem;
+  
+}
+
+.content-box {
+  height: 100px;
+  margin-bottom: 20px;
 }

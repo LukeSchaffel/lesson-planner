@@ -1,13 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='../static/css/lessons.css') }}">
+
 
 <main>
   <div >
-    <h1 >All {{user.username}}'s Lessons</h1>
-    <h3>
-      <a href="{{url_for('users.calendar', username=current_user.username)}}">Switch To Calendar </a>  |  <a href="{{url_for('lessons.create_lesson')}}">Create Lesson</a>
-   
-    </h3>
+    <div id="top-part">
+      <h1 >All {{user.username}}'s Lessons</h1>
+      <h3>
+        <a href="{{url_for('users.calendar', username=current_user.username)}}">Switch To Calendar </a>  |  <a href="{{url_for('lessons.create_lesson')}}">Create Lesson</a>
+      </h3>
+    </div>
     <div>
       {% for lesson in lessons.items %}
       <p id="lesson-summary">
@@ -15,11 +18,7 @@
           {{lesson.student}} 
         </a>
         has a(n) {{lesson.subject}} lesson on {{lesson.lessonDate.strftime('%m-%d-%Y')}}
-        <!-- To <a class="btn btn-primary" href="{{ url_for('lessons.lesson', lesson_id=lesson.id) }}">
-         {{lesson.title}} -->
-        </a>
 
-      
           <!-- Button trigger modal -->
           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{lesson.id}}">
             Details
@@ -77,7 +76,7 @@
       {% endif %}
     {% endfor %}
   </div>
-</main>
+
 </nav>
 </main>
 {% endblock %}
