@@ -4,4 +4,6 @@ label, input {
 
 label {
   margin-bottom: 20px;
+  font-family: 'Schoolbell', cursive;
+  font-size: 3rem;
 }
